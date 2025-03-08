@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Buttons</title>
+    <style>
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" data-target="content1">Tampilkan Div 1</button>
+    <button class="toggle-btn" data-target="content2">Tampilkan Div 2</button>
+    <button class="toggle-btn" data-target="content3">Tampilkan Div 3</button>
+    <button class="toggle-btn" data-target="content4">Tampilkan Div 4</button>
+    
+    <div id="content1" class="content">Ini adalah konten 1</div>
+    <div id="content2" class="content">Ini adalah konten 2</div>
+    <div id="content3" class="content">Ini adalah konten 3</div>
+    <div id="content4" class="content">Ini adalah konten 4</div>
+    
+    <script>
+        document.querySelectorAll('.toggle-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                let targetId = this.getAttribute('data-target');
+                let targetDiv = document.getElementById(targetId);
+                
+                document.querySelectorAll('.content').forEach(div => {
+                    div.style.display = 'none';
+                });
+                
+                if (targetDiv) {
+                    targetDiv.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
